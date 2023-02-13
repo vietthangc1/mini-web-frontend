@@ -58,6 +58,7 @@ const apiThemSanPham=(body)=>{
         let Dia_chi_Xu_ly = `${Dia_chi_Dich_vu}/product`
         Xu_ly_HTTP.open("POST", Dia_chi_Xu_ly, async = true)
         Xu_ly_HTTP.setRequestHeader("Content-Type", "application/json");
+        Xu_ly_HTTP.setRequestHeader("Authorization", token)
         Xu_ly_HTTP.send(JSON.stringify(body))
     })
 }
@@ -78,7 +79,8 @@ const apiUpdateSanPham=(body, id)=>{
         }
         let Dia_chi_Xu_ly = `${Dia_chi_Dich_vu}/product/${id}`
         Xu_ly_HTTP.open("PUT", Dia_chi_Xu_ly, async = true)
-        Xu_ly_HTTP.setRequestHeader("Content-Type", "application/json");
+        Xu_ly_HTTP.setRequestHeader("Content-Type", "application/json")
+        Xu_ly_HTTP.setRequestHeader("Authorization", token)
         Xu_ly_HTTP.send(JSON.stringify(body))
     })
 }
@@ -100,6 +102,49 @@ const apiXoaSanPham=(id)=>{
         let Dia_chi_Xu_ly = `${Dia_chi_Dich_vu}/product/${id}`
         Xu_ly_HTTP.open("DELETE", Dia_chi_Xu_ly, async = true)
         Xu_ly_HTTP.setRequestHeader("Content-Type", "application/json");
+        Xu_ly_HTTP.setRequestHeader("Authorization", token)
         Xu_ly_HTTP.send()
+    })
+}
+
+const apiLogin=(body)=>{
+    return new Promise((Ket_qua, Loi) => {
+        let Du_lieu = {}
+        let Xu_ly_HTTP = new XMLHttpRequest()
+        Xu_ly_HTTP.onload = () => {
+            let status = Xu_ly_HTTP.status
+            var Chuoi_JSON = Xu_ly_HTTP.responseText
+            Du_lieu = JSON.parse(Chuoi_JSON)
+            if (status >= 400) {
+                Loi(Du_lieu)
+            } else {
+                Ket_qua(Du_lieu)
+            }
+        }
+        let Dia_chi_Xu_ly = `${Dia_chi_Dich_vu}/login`
+        Xu_ly_HTTP.open("POST", Dia_chi_Xu_ly, async = true)
+        Xu_ly_HTTP.setRequestHeader("Content-Type", "application/json");
+        Xu_ly_HTTP.send(JSON.stringify(body))
+    })
+}
+
+const apiSignup=(body)=>{
+    return new Promise((Ket_qua, Loi) => {
+        let Du_lieu = {}
+        let Xu_ly_HTTP = new XMLHttpRequest()
+        Xu_ly_HTTP.onload = () => {
+            let status = Xu_ly_HTTP.status
+            var Chuoi_JSON = Xu_ly_HTTP.responseText
+            Du_lieu = JSON.parse(Chuoi_JSON)
+            if (status >= 400) {
+                Loi(Du_lieu)
+            } else {
+                Ket_qua(Du_lieu)
+            }
+        }
+        let Dia_chi_Xu_ly = `${Dia_chi_Dich_vu}/user`
+        Xu_ly_HTTP.open("POST", Dia_chi_Xu_ly, async = true)
+        Xu_ly_HTTP.setRequestHeader("Content-Type", "application/json");
+        Xu_ly_HTTP.send(JSON.stringify(body))
     })
 }

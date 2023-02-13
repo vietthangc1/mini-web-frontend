@@ -17,7 +17,7 @@ const loadModalXoaSanPham = async (id) => {
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-primary" onclick="XoaSanPham(${productInfo.id})">Xóa</button>
+                    <button type="button" class="btn btn-primary" onclick="XoaSanPham(${productInfo.ID})">Xóa</button>
                     </div>
                 </div>
             </div>

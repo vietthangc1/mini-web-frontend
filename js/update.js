@@ -1,6 +1,7 @@
 const loadModalUpdate = async (id) => {
     try {
         let productInfo = await apiChiTiet(id)
+        console.log(productInfo);
         let html = `
         <div class="modal fade" id="modal-update" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
         aria-hidden="true">
@@ -27,7 +28,7 @@ const loadModalUpdate = async (id) => {
                     <input type="number" class="form-control" id="th_update_number" value="${productInfo.number}" placeholder="Number">
                     </div>
                     <div class="mb-3 form-group">
-                    <textarea class="form-control" name="" id="th_update_description" cols="30" rows="5" placeholder="Description" value="${productInfo.description}"></textarea>
+                    <textarea class="form-control" id="th_update_description" cols="30" rows="5" placeholder="Description">${productInfo.description}</textarea>
                     </div>
                     <div class="mb-3 form-group">
                     <input type="text" class="form-control" id="th_update_cate1" value="${productInfo.cate1}" placeholder="Category 1">
@@ -42,13 +43,13 @@ const loadModalUpdate = async (id) => {
                     <input type="text" class="form-control" id="th_update_cate4" value="${productInfo.cate4}" placeholder="Category 4">
                     </div>
                     <div class="mb-3 form-group">
-                    <textarea class="form-control" name="" id="th_update_propertises" cols="30" rows="5" placeholder="Propertises JSON" value="${JSON.stringify(productInfo.propertises)}"></textarea>
+                    <textarea class="form-control" name="" id="th_update_propertises" cols="30" rows="5" placeholder="Propertises JSON">${JSON.stringify(productInfo.propertises, undefined, 4)}</textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" href="javascript:void(0)" onclick="UpdateSanPham(${productInfo.id})">Edit</button>
+                <button type="button" class="btn btn-primary" onclick="UpdateSanPham(${productInfo.ID})">Edit</button>
             </div>
           </div>
         </div>
@@ -61,6 +62,7 @@ const loadModalUpdate = async (id) => {
 }
 
 const UpdateSanPham = async (id) => {
+    let productInfo = await apiChiTiet(id)
     let _propertises = document.getElementById("th_update_propertises").value
     try {
         _propertises = JSON.parse(_propertises)
@@ -69,6 +71,7 @@ const UpdateSanPham = async (id) => {
     }
     let product = {
         sku: document.getElementById("th_update_sku").value,
+        CreatedAt: productInfo.CreatedAt,
         name: document.getElementById("th_update_name").value,
         price: Number(document.getElementById("th_update_price").value),
         number: Number(document.getElementById("th_update_number").value),

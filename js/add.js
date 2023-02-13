@@ -16,7 +16,7 @@ const loadModalInput = () => {
               <input type="text" class="form-control" id="th_sku" placeholder="SKU">
             </div>
             <div class="mb-3 form-group">
-              <input type="text" class="form-control" id="th_name" value="default name" placeholder="Name">
+              <input type="text" class="form-control" id="th_name" placeholder="Name">
             </div>
             <div class="mb-3 form-group">
               <input type="number" class="form-control" id="th_price" placeholder="Price">
@@ -25,7 +25,7 @@ const loadModalInput = () => {
               <input type="number" class="form-control" id="th_number" placeholder="Number">
             </div>
             <div class="mb-3 form-group">
-              <textarea class="form-control" name="" id="th_description" cols="30" rows="5" placeholder="Description"></textarea>
+              <textarea class="form-control" id="th_description" cols="30" rows="5" placeholder="Description"></textarea>
             </div>
             <div class="mb-3 form-group">
               <input type="text" class="form-control" id="th_cate1" placeholder="Category 1">
@@ -40,7 +40,7 @@ const loadModalInput = () => {
               <input type="text" class="form-control" id="th_cate4" placeholder="Category 4">
             </div>
             <div class="mb-3 form-group">
-              <textarea class="form-control" name="" id="th_propertises" cols="30" rows="5" placeholder="Propertise JSON"></textarea>
+              <textarea class="form-control" id="th_propertises" cols="30" rows="5" placeholder="Propertise JSON"></textarea>
             </div>
           </form>
         </div>

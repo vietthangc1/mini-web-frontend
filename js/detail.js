@@ -20,7 +20,8 @@ try {
           <p>Category 3: ${productInfo.cate3}</p>
           <p>Category 4: ${productInfo.cate4}</p>
           <p>Description: ${productInfo.description}</p>
-          <p>Propertises: ${JSON.stringify(productInfo.propertises)}</p>
+          <p>Propertises: </p>
+          <p> ${JSON.stringify(productInfo.propertises, undefined, 4)}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>

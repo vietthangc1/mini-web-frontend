@@ -22,6 +22,7 @@
       <button class="btn btn-primary" id="btn-add-product" onclick="loadModalInput()" data-toggle="modal"
         data-target="#modal-input">Add</button>
       <button class="btn btn-outline-danger" onclick="UpdateParams('', '', clear = true)">Clear filters</button>
+      <div id="login-zone"></div>
     </div>
     <div class="row">
       <div class="col-3">
@@ -29,7 +30,7 @@
           <div class="dropdown mt-2" id="dropdown_cate1">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
               aria-expanded="false" id="title_cate1">
-              Chọn Category 1
+              Select Category 1
             </button>
             <div class="dropdown-menu" id="list_cate1">
             </div>
@@ -38,7 +39,7 @@
           <div class="dropdown mt-2" id="dropdown_cate2">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
               aria-expanded="false" id="title_cate2">
-              Chọn Category 2
+              Select Category 2
             </button>
             <div class="dropdown-menu" id="list_cate2">
             </div>
@@ -47,7 +48,7 @@
           <div class="dropdown mt-2" id="dropdown_cate3">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
               aria-expanded="false" id="title_cate3">
-              Chọn Category 3
+              Select Category 3
             </button>
             <div class="dropdown-menu" id="list_cate3">
             </div>
@@ -56,9 +57,38 @@
           <div class="dropdown mt-2" id="dropdown_cate4">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
               aria-expanded="false" id="title_cate4">
-              Chọn Category 4
+              Select Category 4
             </button>
             <div class="dropdown-menu" id="list_cate4">
+            </div>
+          </div>
+
+          Attributes 
+
+          <div class="dropdown mt-2" id="dropdown_color">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+              aria-expanded="false" id="title_color">
+              Select Color
+            </button>
+            <div class="dropdown-menu" id="list_color">
+            </div>
+          </div>
+
+          <div class="dropdown mt-2" id="dropdown_brand">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+              aria-expanded="false" id="title_brand">
+              Select Brand
+            </button>
+            <div class="dropdown-menu" id="list_brand">
+            </div>
+          </div>
+
+          <div class="dropdown mt-2" id="dropdown_size">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+              aria-expanded="false" id="title_size">
+              Select Size
+            </button>
+            <div class="dropdown-menu" id="list_size">
             </div>
           </div>
         </form>
@@ -101,7 +131,15 @@
   <script src="./js/add.js"></script>
   <script src="./js/delete.js"></script>
   <script src="./js/update.js"></script>
+  <script src="./js/login.js"></script>
+  <script src="./js/signup.js"></script>
   <script>
+    loadLogin()
+    let token = ''
+    if (sessionStorage.USER != null) {
+      token = JSON.parse(sessionStorage.USER).Token
+    }
+    console.log(token);
     const getCurrentParams = () => {
       let current_params = JSON.parse(sessionStorage.getItem("filter_params"))
 
